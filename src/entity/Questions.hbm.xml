@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 16, 2020 2:43:58 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entity.Questions" table="QUESTIONS" schema="dbo" catalog="STUDY" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="q" type="string">
+            <column name="Q" not-null="true" />
+        </property>
+        <property name="aa" type="string">
+            <column name="AA" not-null="true" />
+        </property>
+        <property name="ab" type="string">
+            <column name="AB" not-null="true" />
+        </property>
+        <property name="ac" type="string">
+            <column name="AC" not-null="true" />
+        </property>
+        <property name="ad" type="string">
+            <column name="AD" not-null="true" />
+        </property>
+        <property name="answer" type="string">
+            <column name="ANSWER" not-null="true" />
+        </property>
+        <set name="examDetails" table="EXAM_DETAIL" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="QUESTION_ID" not-null="true" />
+            </key>
+            <one-to-many class="entity.ExamDetail" />
+        </set>
+    </class>
+</hibernate-mapping>

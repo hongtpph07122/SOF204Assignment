@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 16, 2020 2:43:58 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entity.Accounts" table="ACCOUNTS" schema="dbo" catalog="STUDY" optimistic-lock="version">
+        <id name="username" type="string">
+            <column name="USERNAME" />
+            <generator class="assigned" />
+        </id>
+        <property name="password" type="string">
+            <column name="PASSWORD" not-null="true" />
+        </property>
+        <property name="type" type="boolean">
+            <column name="TYPE" not-null="true" />
+        </property>
+        <property name="fullname" type="string">
+            <column name="FULLNAME" not-null="true" />
+        </property>
+        <property name="gender" type="boolean">
+            <column name="GENDER" not-null="true" />
+        </property>
+        <property name="birthday" type="string">
+            <column name="BIRTHDAY" not-null="true" />
+        </property>
+        <property name="phone" type="string">
+            <column name="PHONE" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="EMAIL" not-null="true" />
+        </property>
+        <property name="class_" type="string">
+            <column name="CLASS" />
+        </property>
+        <set name="examResults" table="EXAM_RESULT" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="USERNAME" not-null="true" />
+            </key>
+            <one-to-many class="entity.ExamResult" />
+        </set>
+    </class>
+</hibernate-mapping>

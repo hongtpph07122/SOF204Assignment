@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 16, 2020 2:43:58 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entity.Exam" table="EXAM" schema="dbo" catalog="STUDY" optimistic-lock="version">
+        <id name="id" type="string">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="testDay" type="string">
+            <column name="TEST_DAY" not-null="true" />
+        </property>
+        <set name="examResults" table="EXAM_RESULT" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="EXAM_ID" not-null="true" />
+            </key>
+            <one-to-many class="entity.ExamResult" />
+        </set>
+        <set name="examDetails" table="EXAM_DETAIL" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="EXAM_ID" not-null="true" />
+            </key>
+            <one-to-many class="entity.ExamDetail" />
+        </set>
+    </class>
+</hibernate-mapping>

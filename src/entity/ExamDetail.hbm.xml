@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 16, 2020 2:43:58 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entity.ExamDetail" table="EXAM_DETAIL" schema="dbo" catalog="STUDY" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="exam" class="entity.Exam" fetch="select">
+            <column name="EXAM_ID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="questions" class="entity.Questions" fetch="select">
+            <column name="QUESTION_ID" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>
